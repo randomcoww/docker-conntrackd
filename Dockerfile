@@ -5,5 +5,5 @@ RUN set -x \
   && apk add --no-cache \
     conntrack-tools
 
-COPY entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
