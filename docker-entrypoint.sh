@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -n "$CONNTRACKD_LOCAL_CONFIG" ]; then
   echo -en "$CONNTRACKD_LOCAL_CONFIG" > /etc/conntrackd/conntrackd.conf
