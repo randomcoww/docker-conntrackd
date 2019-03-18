@@ -1,9 +1,12 @@
-FROM alpine:edge
+FROM debian:testing-slim
 
 RUN set -x \
   \
-  && apk add --no-cache \
-    conntrack-tools
+  && apt-get update -y \
+  && apt-get install -y \
+    conntrackd \
+  && apt-get autoremove \
+  && apt-get clean
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
