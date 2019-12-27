@@ -8,5 +8,4 @@ RUN set -x \
   && apt-get autoremove \
   && apt-get clean
 
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/sbin/conntrackd"]
