@@ -1,11 +1,8 @@
-FROM debian:testing-slim
+FROM alpine:edge
 
 RUN set -x \
   \
-  && apt-get update -y \
-  && apt-get install -y \
-    conntrackd \
-  && apt-get autoremove \
-  && apt-get clean
+  && apk add --no-cache \
+    conntrack-tools
 
 ENTRYPOINT ["/usr/sbin/conntrackd"]
