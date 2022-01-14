@@ -1,16 +1,16 @@
 ### Image build
 
 ```
-mkdir -p build
-export TMPDIR=$(pwd)/build
-
 VERSION=latest
+TAG=ghcr.io/randomcoww/conntrackd:$VERSION
 
-podman build \
+buildah build \
   -f Dockerfile \
-  -t ghcr.io/randomcoww/conntrackd:$VERSION
-```
+  -t localtemp
 
-```
-podman push ghcr.io/randomcoww/conntrackd:$VERSION
+container=$(buildah from localtemp)
+buildah run --net=none $container -- rm /etc/hosts
+buildah commit $container $TAG
+
+buildah push ghcr.io/randomcoww/conntrackd:$VERSION
 ```
