@@ -12,5 +12,5 @@ container=$(buildah from localtemp)
 buildah run --net=none $container -- rm /etc/hosts
 buildah commit $container $TAG
 
-buildah push ghcr.io/randomcoww/conntrackd:$VERSION
+buildah push $TAG
 ```
